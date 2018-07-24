@@ -1,3 +1,7 @@
+import disk
+import core
+
+
 def intro():
     while True:
         user = input(
