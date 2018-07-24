@@ -48,21 +48,34 @@ def renting(inventory):
                 print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'bikes')
-                print('\nYou\'ve rented 1 bike.')
+                print('\nThat will be ${} for the bike and a ${} deposit.'.
+                      format(
+                          core.sales_tax(inventory['bikes']['rent price']),
+                          core.replacement_tax(
+                              inventory['bikes']['replacement price'])))
                 return inventory
         if choice == '2':
             if inventory['skateboards']['amount'] <= 0:
                 print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'skateboards')
-                print('\nYou\'ve rented 1 skateboard.')
+                print('\nThat will be ${} for the bike and a ${} deposit.'.
+                      format(
+                          core.sales_tax(
+                              inventory['skateboards']['rent price']),
+                          core.replacement_tax(
+                              inventory['skateboards']['replacement price'])))
                 return inventory
         if choice == '3':
             if inventory['scooters']['amount'] <= 0:
                 print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'scooters')
-                print('\nYou\'ve rented 1 scooter.')
+                print('\nThat will be ${} for the bike and a ${} deposit.'.
+                      format(
+                          core.sales_tax(inventory['scooters']['rent price']),
+                          core.replacement_tax(
+                              inventory['scooters']['replacement price'])))
                 return inventory
         if choice == '4':
             exit()
@@ -84,7 +97,7 @@ def returning(inventory):
         choice = input('What item are you returning: ')
         if choice == '1':
             inventory = core.return_item(inventory, 'bikes')
-            print('\nYou returned 1 bike.')
+            print('\n You\'ve returned 1 bike.')
             return inventory
         if choice == '2':
             inventory = core.return_item(inventory, 'skateboards')
