@@ -16,8 +16,7 @@ def create_inventory(file_info):
 def rent_item(inventory, item_type):
     name = inventory[item_type]['name']
     if inventory[item_type]['amount'] == 0:
-        print('Sorry, these are not in stock.')
+        return 1
     else:
         inventory[item_type]['amount'] = inventory[item_type]['amount'] - 1
-        print(f'You\'ve rented 1 {name}.')
         return inventory
