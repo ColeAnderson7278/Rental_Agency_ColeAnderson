@@ -23,3 +23,13 @@ def return_item(inventory, item_type):
     name = inventory[item_type]['name']
     inventory[item_type]['amount'] = inventory[item_type]['amount'] + 1
     return inventory
+
+
+def sales_tax(number):
+    number = round(number + (number * .07), 2)
+    return number
+
+
+def replacement_tax(number):
+    number = round((number * .1), 2)
+    return number
