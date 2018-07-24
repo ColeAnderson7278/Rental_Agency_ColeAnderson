@@ -37,16 +37,20 @@ def intro(inventory):
 
 def renting(inventory):
     print(f'''
-{inventory['bikes']['name']} - Rent Price: ${inventory['bikes']['rent price']} Replacement Price: ${inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
+1) {inventory['bikes']['name']} - Rent Price: ${inventory['bikes']['rent price']} Replacement Price: ${inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
 
-{inventory['skateboards']['name']} - Rent Price: ${inventory['skateboards']['rent price']} Replacement Price: ${inventory['skateboards']['replacement price']} In-Stock: {inventory['skateboards']['amount']}
+2) {inventory['skateboards']['name']} - Rent Price: ${inventory['skateboards']['rent price']} Replacement Price: ${inventory['skateboards']['replacement price']} In-Stock: {inventory['skateboards']['amount']}
 
-{inventory['scooters']['name']} - Rent Price: ${inventory['scooters']['rent price']} Replacement Price: ${inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
+3) {inventory['scooters']['name']} - Rent Price: ${inventory['scooters']['rent price']} Replacement Price: ${inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
     ''')
     while True:
         choice = input('What would you like to rent: ')
-        if choice in movies:
-            check_out(choice)
+        if choice == '1':
+            core.rent_item(inventory, 'bikes')
+        if choice == '2':
+            core.rent_item(inventory, 'skateboards')
+        if choice == '3':
+            core.rent_item(inventory, 'scooters')
         else:
             print('Please choose a valid option.')
 
