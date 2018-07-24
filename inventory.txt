@@ -1,1 +1,15 @@
-Inventory
+Type,Name,Rental Price,Replacement Price,Status
+movie, Jaws, 2.50, 7.50, in
+movie, Pulp Fiction, 3.00, 8.00, in
+movie, It, 5.00, 15.00, in
+movie, Dark Knight, 4.00, 10.00, in
+
+game, Resident Evil 4, 5.00, 40.00, in
+game, Bloodborne, 3.50, 30.00, in
+game, GTA V, 2.50, 45.00, in
+game, Borderlands, 2.00, 25.00, in
+
+book, House of the Scorpion, 1.50, 12.00, in
+book, Penpal, 2.50, 10.00, in
+book, Fight Club, 4.00, 20.00, in
+book, The Dead Body, 1.50, 5.00, in
