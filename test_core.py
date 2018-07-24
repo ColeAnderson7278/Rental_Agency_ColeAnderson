@@ -4,17 +4,27 @@ import disk
 
 
 @fake_file({
-    'inventory.txt':
-    '''
-movie,Jaws,2.50,7.50,avaliable
-game,Resident Evil 4,5.00,40.00,avaliable
-book,House of the Scorpion,1.50,12.00,avaliable
+    'file.txt': '''
+bikes,25,150,10
+skates,10,80,6
+scooter,15,65,8
 '''
 })
 def test_create_dictionary():
-    file_info = disk.read_file('inventory.txt')
-    assert core.create_dictionary(file_info) == {
-        'movie': ['Jaws', '2.50', '7.50', 'avaliable\n'],
-        'game': ['Resident Evil 4', '5.00', '40.00', 'avaliable\n'],
-        'book': ['House of the Scorpion', '1.50', '12.00', 'avaliable\n']
-    }
+    assert core.create_dictionary(disk.read_file('file.txt')) == ({
+        'bikes': {
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 10
+        },
+        'skates': {
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'rent price': 15,
+            'replacement price': 65,
+            'amount': 8
+        }
+    })
