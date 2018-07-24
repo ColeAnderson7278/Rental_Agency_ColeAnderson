@@ -37,11 +37,11 @@ def intro(inventory):
 
 def renting(inventory):
     print(f'''
-Bikes - Rent Price: {inventory['bikes']['rent price']} Replacement Price: {inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
+{inventory['bikes']['name']} - Rent Price: ${inventory['bikes']['rent price']} Replacement Price: ${inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
 
-Skates - Rent Price: {inventory['skates']['rent price']} Replacement Price: {inventory['skates']['replacement price']} In-Stock: {inventory['skates']['amount']}
+{inventory['skateboards']['name']} - Rent Price: ${inventory['skateboards']['rent price']} Replacement Price: ${inventory['skateboards']['replacement price']} In-Stock: {inventory['skateboards']['amount']}
 
-Scooters - Rent Price: {inventory['scooters']['rent price']} Replacement Price: {inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
+{inventory['scooters']['name']} - Rent Price: ${inventory['scooters']['rent price']} Replacement Price: ${inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
     ''')
     while True:
         choice = input('What would you like to rent: ')
