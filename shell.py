@@ -45,15 +45,22 @@ def renting(inventory):
         choice = input('What would you like to rent: ')
         if choice == '1':
             if inventory['bikes']['amount'] <= 0:
-                print('Sorry, this item is not in stock.')
+                print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'bikes')
                 return inventory
         if choice == '2':
-            inventory = core.rent_item(inventory, 'skateboards')
-            return inventory
+            if inventory['skateboards']['amount'] <= 0:
+                print('\nSorry, this item is not in stock.')
+            else:
+                inventory = core.rent_item(inventory, 'skateboards')
+                return inventory
         if choice == '3':
-            core.rent_item(inventory, 'scooters')
+            if inventory['scooters']['amount'] <= 0:
+                print('\nSorry, this item is not in stock.')
+            else:
+                inventory = core.rent_item(inventory, 'scooters')
+                return inventory
         if choice == '4':
             exit()
         else:

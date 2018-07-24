@@ -15,8 +15,5 @@ def create_inventory(file_info):
 
 def rent_item(inventory, item_type):
     name = inventory[item_type]['name']
-    if inventory[item_type]['amount'] == 0:
-        return 1
-    else:
-        inventory[item_type]['amount'] = inventory[item_type]['amount'] - 1
-        return inventory
+    inventory[item_type]['amount'] = inventory[item_type]['amount'] - 1
+    return inventory
