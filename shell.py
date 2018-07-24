@@ -9,7 +9,7 @@ def customer_choices(inventory):
         if choice == '1':
             renting(inventory)
         if choice == '2':
-            returning()
+            returning(inventory)
         if choice == '3':
             exit()
 
@@ -61,6 +61,33 @@ def renting(inventory):
             else:
                 inventory = core.rent_item(inventory, 'scooters')
                 return inventory
+        if choice == '4':
+            exit()
+        else:
+            print('\nPlease choose a valid option.\n')
+
+
+def returning(inventory):
+    print(f'''
+1) {inventory['bikes']['name']} - Rent Price: ${inventory['bikes']['rent price']} Replacement Price: ${inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
+
+2) {inventory['skateboards']['name']} - Rent Price: ${inventory['skateboards']['rent price']} Replacement Price: ${inventory['skateboards']['replacement price']} In-Stock: {inventory['skateboards']['amount']}
+
+3) {inventory['scooters']['name']} - Rent Price: ${inventory['scooters']['rent price']} Replacement Price: ${inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
+
+4) Exit 
+    ''')
+    while True:
+        choice = input('What item are you returning: ')
+        if choice == '1':
+            inventory = core.return_item(inventory, 'bikes')
+            return inventory
+        if choice == '2':
+            inventory = core.return_item(inventory, 'skateboards')
+            return inventory
+        if choice == '3':
+            inventory = core.return_item(inventory, 'scooters')
+            return inventory
         if choice == '4':
             exit()
         else:
