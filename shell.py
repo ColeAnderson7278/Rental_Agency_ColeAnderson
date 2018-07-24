@@ -48,18 +48,21 @@ def renting(inventory):
                 print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'bikes')
+                print('\nYou\'ve rented 1 bike.')
                 return inventory
         if choice == '2':
             if inventory['skateboards']['amount'] <= 0:
                 print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'skateboards')
+                print('\nYou\'ve rented 1 skateboard.')
                 return inventory
         if choice == '3':
             if inventory['scooters']['amount'] <= 0:
                 print('\nSorry, this item is not in stock.')
             else:
                 inventory = core.rent_item(inventory, 'scooters')
+                print('\nYou\'ve rented 1 scooter.')
                 return inventory
         if choice == '4':
             exit()
@@ -81,12 +84,15 @@ def returning(inventory):
         choice = input('What item are you returning: ')
         if choice == '1':
             inventory = core.return_item(inventory, 'bikes')
+            print('\nYou returned 1 bike.')
             return inventory
         if choice == '2':
             inventory = core.return_item(inventory, 'skateboards')
+            print('\nYou returned 1 skateboard.')
             return inventory
         if choice == '3':
             inventory = core.return_item(inventory, 'scooters')
+            print('\nYou returned 1 scooter.')
             return inventory
         if choice == '4':
             exit()
