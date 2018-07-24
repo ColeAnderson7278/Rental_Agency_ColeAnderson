@@ -1,5 +1,5 @@
-def create_dictionary(file_info):
-    dictionary = {}
+def create_inventory(file_info):
+    inventory = {}
     for lines in file_info:
         info = lines.split(',')
         key = info[0].strip()
@@ -8,5 +8,5 @@ def create_dictionary(file_info):
             'replacement price': int(info[2]),
             'amount': int(info[3])
         }
-        dictionary[key] = value
-    return dictionary
+        inventory[key] = value
+    return inventory

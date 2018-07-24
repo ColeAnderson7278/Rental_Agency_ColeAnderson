@@ -1,4 +1,4 @@
 type,rent price,replacement price,amount
 bikes,25,150,10
 skates,10,80,6
-scooter,15,65,8
+scooters,15,65,8
