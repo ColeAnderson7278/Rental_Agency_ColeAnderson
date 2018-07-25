@@ -35,6 +35,15 @@ def replacement_tax(number):
     return number
 
 
+def add_to_history(inventory, type_, choice):
+    if type_ == 'rent':
+        return f'''{type_},{choice},{replacement_tax(
+                        inventory[choice]['replacement price'])}'''
+    elif type_ == 'return':
+        return f'''{type_},{choice},{sales_tax(
+                        inventory[choice]['rent price'])}'''
+
+
 #def dictionary_to_file(dictionary):
 #    l = []
 #    for items in dictionary.keys():

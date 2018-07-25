@@ -95,10 +95,12 @@ Please enter "exit" to leave the program.
         if choice in inventory:
             inventory = core.return_item(inventory, choice)
             print(
-                '\nYou\'ve returned 1 {}. Here is your deposit of ${}.'.format(
+                '\nYou\'ve returned 1 {}. Here is your deposit of ${} and your total is ${}'.
+                format(
                     inventory[choice]['name'],
                     core.replacement_tax(
-                        inventory[choice]['replacement price'])))
+                        inventory[choice]['replacement price']),
+                    core.sales_tax(inventory[choice]['rent price'])))
         return inventory
         if choice not in inventory:
             print('\nSorry, but that\'s not an item you can return.\n')
