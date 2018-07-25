@@ -8,3 +8,8 @@ def read_file(filename):
 def write_file(string_inventory):
     with open(filename, 'w') as file:
         file.write(string_inventory)
+
+
+def append_file(transaction, filename):
+    with open(filename, 'a') as file:
+        file.write(transaction)

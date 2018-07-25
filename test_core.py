@@ -149,4 +149,4 @@ def test_add_to_history():
             'replacement price': 65,
             'amount': 8
         }
-    }), 'rent', 'bike') == '''rent,bike,15.0'''
+    }), 'rent', 'bike') == '''rent,bike,15.0\n'''
