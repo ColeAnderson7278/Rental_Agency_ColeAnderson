@@ -2,6 +2,20 @@ import disk
 import core
 
 
+def print_inventory(inventory):
+    print(f'''
+---------------------------------------------------------------------------
+{inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
+
+{inventory['skateboard']['name']} - Rent Price: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
+
+{inventory['scooter']['name']} - Rent Price: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
+
+Please enter "exit" to leave the program.
+---------------------------------------------------------------------------
+    ''')
+
+
 def customer_choices(inventory, history):
     while True:
         choice = input(
@@ -51,18 +65,12 @@ def transaction_history():
     print('----------------------------------')
 
 
+def total_revenue(history):
+    print(f'\nThe store\'s total revenue is: ${core.find_total(history)}')
+
+
 def renting(inventory, history):
-    print(f'''
----------------------------------------------------------------------------
-{inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
-
-{inventory['skateboard']['name']} - Rent Price: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
-
-{inventory['scooter']['name']} - Rent Price: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
-
-Please enter "exit" to leave the program.
----------------------------------------------------------------------------
-    ''')
+    print_inventory(inventory)
     while True:
         choice = input('What would you like to rent: ')
         choice = choice.lower().strip()
@@ -89,17 +97,7 @@ Please enter "exit" to leave the program.
 
 
 def returning(inventory, history):
-    print(f'''
----------------------------------------------------------------------------
-{inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
-
-{inventory['skateboard']['name']} - Rent Price: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
-
-{inventory['scooter']['name']} - Rent Price: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
-
-Please enter "exit" to leave the program.
----------------------------------------------------------------------------
-    ''')
+    print_inventory(inventory)
     while True:
         choice = input('What item are you returning: ')
         if choice in inventory:
@@ -122,17 +120,16 @@ Please enter "exit" to leave the program.
 def main():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
     history = core.create_history(disk.read_file('history.txt'))
-    #while True:
-    #    user = input(
-    #        'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
-    #    )
-    #    if user == '1':
-    #        customer_choices(inventory, history)
-    #    elif user == '2':
-    #        employee_choices(inventory, history)
-    #    elif user == '3':
-    #        exit()
-    print(history[0])
+    while True:
+        user = input(
+            'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
+        )
+        if user == '1':
+            customer_choices(inventory, history)
+        elif user == '2':
+            employee_choices(inventory, history)
+        elif user == '3':
+            exit()
 
 
 if __name__ == '__main__':
