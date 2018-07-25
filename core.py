@@ -65,9 +65,9 @@ def create_history(file_info):
 
 def find_total(history):
     total = 0
-    for line in history:
-        for keys in line.keys():
-            print(keys)
+    for line in history[0][0:]:
+        total += float(line[0])
+    print(total)
 
 
 #def dictionary_to_file(dictionary):
