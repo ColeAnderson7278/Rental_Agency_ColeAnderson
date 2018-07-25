@@ -33,3 +33,13 @@ def sales_tax(number):
 def replacement_tax(number):
     number = round((number * .1), 2)
     return number
+
+
+#def dictionary_to_file(dictionary):
+#    l = []
+#    for items in dictionary.keys():
+#        l.append(items)
+#    x = ''
+#    for items in l:
+#        x.add(dictionary[l]['amount'])
+#    return x
