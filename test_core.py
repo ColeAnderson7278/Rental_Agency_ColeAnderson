@@ -177,3 +177,9 @@ def test_find_total():
     assert core.find_total([[['15.0', 'bike', 'rent',
                          '\n'], ['15.0', 'bike', 'rent', '\n'],
                         ['6.5', 'scooter', 'rent', '\n']]]) == 36.5
+
+def test_dictionary_to_file():
+    assert core.dictionary_to_file({'bike': {'name': 'Bike', 'rent price': 25, 'replacement price': 150, 'amount': 10}, 'skateboard': {'name': 'Skateboard', 'rent price': 10, 'replacement price': 80, 'amount': 6}, 'scooter': {'name': 'Scooter', 'rent price': 15, 'replacement price': 65, 'amount': 8}}
+) == '''bike,Bike,25,150,10
+skateboard,Skateboard,10,80,6
+scooter,Scooter,15,65,8'''

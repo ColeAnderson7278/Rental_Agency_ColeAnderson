@@ -70,11 +70,9 @@ def find_total(history):
     return total
 
 
-#def dictionary_to_file(dictionary):
-#    l = []
-#    for items in dictionary.keys():
-#        l.append(items)
-#    x = ''
-#    for items in l:
-#        x.add(dictionary[l]['amount'])
-#    return x
+def dictionary_to_file(dictionary):
+    return '''bike,Bike,25,150,{}
+skateboard,Skateboard,10,80,{}
+scooter,Scooter,15,65,{}'''.format(dictionary['bike']['amount'],
+                                   dictionary['skateboard']['amount'],
+                                   dictionary['scooter']['amount'])
