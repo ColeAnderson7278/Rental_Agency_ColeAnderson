@@ -2,14 +2,14 @@ import disk
 import core
 
 
-def customer_choices(inventory):
+def customer_choices(inventory, history):
     while True:
         choice = input(
             '\n1) Rent\n2) Return\n3) Exit\nWhat can I help you with: ')
         if choice == '1':
-            renting(inventory)
+            renting(inventory, history)
         if choice == '2':
-            returning(inventory)
+            returning(inventory, history)
         if choice == '3':
             exit()
 
@@ -64,13 +64,14 @@ Please enter "exit" to leave the program.
                 print('\nSorry, that item is not avaliable.')
             else:
                 print(
-                    '\nThe cost for the {} will be ${} when you return it. As for now your deposit price is ${}\n'.
+                    '\nThe cost for the {} will be ${} when you return it. As for now your deposit price is ${}'.
                     format(
                         inventory[choice]['name'],
                         core.sales_tax(inventory[choice]['rent price']),
                         core.replacement_tax(
                             inventory[choice]['replacement price'])))
-                return inventory
+                inventory = core.rent_item(inventory, choice)
+            return inventory
         if choice == 'exit':
             exit()
         elif choice not in inventory:
@@ -98,7 +99,7 @@ Please enter "exit" to leave the program.
                     inventory[choice]['name'],
                     core.replacement_tax(
                         inventory[choice]['replacement price'])))
-            return inventory
+        return inventory
         if choice not in inventory:
             print('\nSorry, but that\'s not an item you can return.\n')
 
