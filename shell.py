@@ -33,84 +33,61 @@ def employee_choices(inventory):
 
 def renting(inventory):
     print(f'''
-1) {inventory['bikes']['name']} - Rent Price: ${inventory['bikes']['rent price']} Replacement Price: ${inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
+---------------------------------------------------------------------------
+{inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
 
-2) {inventory['skateboards']['name']} - Rent Price: ${inventory['skateboards']['rent price']} Replacement Price: ${inventory['skateboards']['replacement price']} In-Stock: {inventory['skateboards']['amount']}
+{inventory['skateboard']['name']} - Rent Price: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
 
-3) {inventory['scooters']['name']} - Rent Price: ${inventory['scooters']['rent price']} Replacement Price: ${inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
+{inventory['scooter']['name']} - Rent Price: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
 
-4) Exit 
+Please enter "exit" to leave the program.
+---------------------------------------------------------------------------
     ''')
     while True:
         choice = input('What would you like to rent: ')
-        if choice == '1':
-            if inventory['bikes']['amount'] <= 0:
-                print('\nSorry, this item is not in stock.')
+        choice = choice.lower().strip()
+        if choice in inventory:
+            if inventory[choice]['amount'] <= 0:
+                print('\nSorry, that item is not avaliable.')
             else:
-                inventory = core.rent_item(inventory, 'bikes')
-                print('\nThat will be ${} for the bike and a ${} deposit.'.
-                      format(
-                          core.sales_tax(inventory['bikes']['rent price']),
-                          core.replacement_tax(
-                              inventory['bikes']['replacement price'])))
+                print(
+                    '\nThe cost for the {} will be ${} when you return it. As for now your deposit price is ${}\n'.
+                    format(
+                        inventory[choice]['name'],
+                        core.sales_tax(inventory[choice]['rent price']),
+                        core.replacement_tax(
+                            inventory[choice]['replacement price'])))
                 return inventory
-        if choice == '2':
-            if inventory['skateboards']['amount'] <= 0:
-                print('\nSorry, this item is not in stock.')
-            else:
-                inventory = core.rent_item(inventory, 'skateboards')
-                print('\nThat will be ${} for the bike and a ${} deposit.'.
-                      format(
-                          core.sales_tax(
-                              inventory['skateboards']['rent price']),
-                          core.replacement_tax(
-                              inventory['skateboards']['replacement price'])))
-                return inventory
-        if choice == '3':
-            if inventory['scooters']['amount'] <= 0:
-                print('\nSorry, this item is not in stock.')
-            else:
-                inventory = core.rent_item(inventory, 'scooters')
-                print('\nThat will be ${} for the bike and a ${} deposit.'.
-                      format(
-                          core.sales_tax(inventory['scooters']['rent price']),
-                          core.replacement_tax(
-                              inventory['scooters']['replacement price'])))
-                return inventory
-        if choice == '4':
+        if choice == 'exit':
             exit()
-        else:
+        elif choice not in inventory:
             print('\nPlease choose a valid option.\n')
 
 
 def returning(inventory):
     print(f'''
-1) {inventory['bikes']['name']} - Rent Price: ${inventory['bikes']['rent price']} Replacement Price: ${inventory['bikes']['replacement price']} In-Stock: {inventory['bikes']['amount']}
+---------------------------------------------------------------------------
+{inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
 
-2) {inventory['skateboards']['name']} - Rent Price: ${inventory['skateboards']['rent price']} Replacement Price: ${inventory['skateboards']['replacement price']} In-Stock: {inventory['skateboards']['amount']}
+{inventory['skateboard']['name']} - Rent Price: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
 
-3) {inventory['scooters']['name']} - Rent Price: ${inventory['scooters']['rent price']} Replacement Price: ${inventory['scooters']['replacement price']} In-Stock: {inventory['scooters']['amount']}
+{inventory['scooter']['name']} - Rent Price: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
 
-4) Exit 
+Please enter "exit" to leave the program.
+---------------------------------------------------------------------------
     ''')
     while True:
         choice = input('What item are you returning: ')
-        if choice == '1':
-            inventory = core.return_item(inventory, 'bikes')
-            print('\n You\'ve returned 1 bike.')
+        if choice in inventory:
+            inventory = core.return_item(inventory, choice)
+            print(
+                '\nYou\'ve returned 1 {}. Here is your deposit of ${}.'.format(
+                    inventory[choice]['name'],
+                    core.replacement_tax(
+                        inventory[choice]['replacement price'])))
             return inventory
-        if choice == '2':
-            inventory = core.return_item(inventory, 'skateboards')
-            print('\nYou returned 1 skateboard.')
-            return inventory
-        if choice == '3':
-            inventory = core.return_item(inventory, 'scooters')
-            print('\nYou returned 1 scooter.')
-            return inventory
-        if choice == '4':
-            exit()
-        else:
-            print('\nPlease choose a valid option.\n')
+        if choice not in inventory:
+            print('\nSorry, but that\'s not an item you can return.\n')
 
 
 def main():
