@@ -37,26 +37,32 @@ def replacement_tax(number):
 
 def add_to_history(inventory, type_, choice):
     if type_ == 'rent':
-        return f'''{type_},{choice},{replacement_tax(
-                        inventory[choice]['replacement price'])}\n'''
+        return f'''{replacement_tax(
+                        inventory[choice]['replacement price'])},{choice},{type_}\n'''
     elif type_ == 'return':
         payment = round(
             sales_tax(inventory[choice]['rent price']) - replacement_tax(
                 inventory[choice]['replacement price']), 2)
-        return f'''{type_},{choice},{payment}\n'''
+        return f'''{payment},{choice},{type_}\n'''
 
 
 def create_history(file_info):
-    history = {}
-    for line in file_info:
-        info = line.split(',')
-        key = info[0]
-        value = {
-            'product': info[1].strip(),
-            'price': float(info[2].replace('\n', ''))
-        }
-        history[key] = value
-    return history
+    if file_info == '':
+        history = 'None'
+        return history
+    else:
+        list_of = []
+        history = {}
+        for line in file_info:
+            info = line.split(',')
+            key = float(info[0])
+            value = {
+                'product': info[1].strip(),
+                'price': info[2].replace('\n', '')
+            }
+            history[key] = value
+        list_of.append(history)
+        return list_of
 
 
 #def find_total(history):

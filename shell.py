@@ -132,8 +132,9 @@ def main():
             employee_choices(inventory, history)
         elif user == '3':
             exit()
-    #for x in disk.read_file('history.txt'):
-    #    print(x)
+    #for x in history[0:]:
+    #    for keys in x.keys():
+    #        print(keys)
 
 
 if __name__ == '__main__':
