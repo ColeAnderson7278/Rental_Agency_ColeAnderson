@@ -14,24 +14,37 @@ def customer_choices(inventory):
             exit()
 
 
-def employee_choices(inventory):
+def employee_choices(inventory, history):
     while True:
         choice = input(
             '\n1) Check Stock\n2) Transactions\n3) Revenue\n4) Exit\nWhat can I help you with: '
         )
         if choice == '1':
-            check_stock()
-        if choice == '2':
-            transaction_history()
-        if choice == '3':
-            total_revenue()
-        if choice == '4':
+            check_stock(inventory)
+        elif choice == '2':
+            transaction_history(history)
+        elif choice == '3':
+            total_revenue(history)
+        elif choice == '4':
             exit()
         else:
             print('Invalid Response. Please enter a valid number.')
 
 
-def renting(inventory):
+def check_stock(inventory):
+    print(f'''
+---------------------------------------------------------------------------
+{inventory['bike']['name']} -In-Stock: {inventory['bike']['amount']}
+
+{inventory['skateboard']['name']} -In-Stock: {inventory['skateboard']['amount']}
+
+{inventory['scooter']['name']} -In-Stock: {inventory['scooter']['amount']}
+
+---------------------------------------------------------------------------
+    ''')
+
+
+def renting(inventory, history):
     print(f'''
 ---------------------------------------------------------------------------
 {inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
@@ -64,7 +77,7 @@ Please enter "exit" to leave the program.
             print('\nPlease choose a valid option.\n')
 
 
-def returning(inventory):
+def returning(inventory, history):
     print(f'''
 ---------------------------------------------------------------------------
 {inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
@@ -92,14 +105,15 @@ Please enter "exit" to leave the program.
 
 def main():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
+    history = core.create_inventory(disk.read_file('inventory.txt'))
     while True:
         user = input(
             'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
         )
         if user == '1':
-            customer_choices(inventory)
+            customer_choices(inventory, history)
         elif user == '2':
-            customer_choices(inventory)
+            employee_choices(inventory, history)
         elif user == '3':
             exit()
 
