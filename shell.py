@@ -122,19 +122,17 @@ Please enter "exit" to leave the program.
 def main():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
     history = core.create_history(disk.read_file('history.txt'))
-    while True:
-        user = input(
-            'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
-        )
-        if user == '1':
-            customer_choices(inventory, history)
-        elif user == '2':
-            employee_choices(inventory, history)
-        elif user == '3':
-            exit()
-    #for x in history[0:]:
-    #    for keys in x.keys():
-    #        print(keys)
+    #while True:
+    #    user = input(
+    #        'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
+    #    )
+    #    if user == '1':
+    #        customer_choices(inventory, history)
+    #    elif user == '2':
+    #        employee_choices(inventory, history)
+    #    elif user == '3':
+    #        exit()
+    print(history[0])
 
 
 if __name__ == '__main__':
