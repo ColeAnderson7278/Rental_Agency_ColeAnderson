@@ -89,6 +89,8 @@ def renting(inventory, history):
                 disk.append_file(
                     core.add_to_history(inventory, 'rent', choice),
                     'history.txt')
+                disk.write_file(
+                    core.dictionary_to_file(inventory), 'inventory.txt')
             return inventory
         if choice == 'exit':
             exit()
@@ -112,6 +114,8 @@ def returning(inventory, history):
             disk.append_file(
                 core.add_to_history(inventory, 'return', choice),
                 'history.txt')
+            disk.write_file(
+                core.dictionary_to_file(inventory), 'inventory.txt')
         return inventory,
         if choice not in inventory:
             print('\nSorry, but that\'s not an item you can return.\n')
@@ -122,7 +126,7 @@ def main():
     history = core.create_history(disk.read_file('history.txt'))
     while True:
         user = input(
-            'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
+            'Welcome to the Rental Store\n\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
         )
         if user == '1':
             customer_choices(inventory, history)
