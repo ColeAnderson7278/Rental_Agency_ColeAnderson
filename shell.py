@@ -22,7 +22,7 @@ def employee_choices(inventory, history):
         if choice == '1':
             check_stock(inventory)
         elif choice == '2':
-            transaction_history(history)
+            transaction_history()
         elif choice == '3':
             total_revenue(history)
         elif choice == '4':
@@ -42,6 +42,13 @@ def check_stock(inventory):
 
 ---------------------------------------------------------------------------
     ''')
+
+
+def transaction_history():
+    print('\nTransaction List:\n----------------------------------')
+    for transactions in disk.read_file('history.txt'):
+        print(transactions)
+    print('----------------------------------')
 
 
 def renting(inventory, history):
@@ -114,7 +121,7 @@ Please enter "exit" to leave the program.
 
 def main():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
-    history = core.create_inventory(disk.read_file('inventory.txt'))
+    history = core.create_history(disk.read_file('history.txt'))
     while True:
         user = input(
             'Welcome to the Rental Store\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
@@ -125,6 +132,8 @@ def main():
             employee_choices(inventory, history)
         elif user == '3':
             exit()
+    #for x in disk.read_file('history.txt'):
+    #    print(x)
 
 
 if __name__ == '__main__':

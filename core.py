@@ -46,6 +46,24 @@ def add_to_history(inventory, type_, choice):
         return f'''{type_},{choice},{payment}\n'''
 
 
+def create_history(file_info):
+    history = {}
+    for line in file_info:
+        info = line.split(',')
+        key = info[0]
+        value = {
+            'product': info[1].strip(),
+            'price': float(info[2].replace('\n', ''))
+        }
+        history[key] = value
+    return history
+
+
+#def find_total(history):
+#    total = 0
+#    for line in history:
+#        print(history)
+
 #def dictionary_to_file(dictionary):
 #    l = []
 #    for items in dictionary.keys():
