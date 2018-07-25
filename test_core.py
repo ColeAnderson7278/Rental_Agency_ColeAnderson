@@ -150,3 +150,24 @@ def test_add_to_history():
             'amount': 8
         }
     }), 'rent', 'bike') == '''rent,bike,15.0\n'''
+
+    assert core.add_to_history(({
+        'bike': {
+            'name': 'bike',
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 10
+        },
+        'skateboard': {
+            'name': 'skateboard',
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'name': 'scooter',
+            'rent price': 15,
+            'replacement price': 65,
+            'amount': 8
+        }
+    }), 'return', 'scooter') == '''return,scooter,9.55\n'''

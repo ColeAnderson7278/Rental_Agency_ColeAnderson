@@ -40,8 +40,10 @@ def add_to_history(inventory, type_, choice):
         return f'''{type_},{choice},{replacement_tax(
                         inventory[choice]['replacement price'])}\n'''
     elif type_ == 'return':
-        return f'''{type_},{choice},{sales_tax(
-                        inventory[choice]['rent price'])}\n'''
+        payment = round(
+            sales_tax(inventory[choice]['rent price']) - replacement_tax(
+                inventory[choice]['replacement price']), 2)
+        return f'''{type_},{choice},{payment}\n'''
 
 
 #def dictionary_to_file(dictionary):

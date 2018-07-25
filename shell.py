@@ -71,6 +71,9 @@ Please enter "exit" to leave the program.
                         core.replacement_tax(
                             inventory[choice]['replacement price'])))
                 inventory = core.rent_item(inventory, choice)
+                disk.append_file(
+                    core.add_to_history(inventory, 'rent', choice),
+                    'history.txt')
             return inventory
         if choice == 'exit':
             exit()
@@ -101,7 +104,10 @@ Please enter "exit" to leave the program.
                     core.replacement_tax(
                         inventory[choice]['replacement price']),
                     core.sales_tax(inventory[choice]['rent price'])))
-        return inventory
+            disk.append_file(
+                core.add_to_history(inventory, 'return', choice),
+                'history.txt')
+        return inventory,
         if choice not in inventory:
             print('\nSorry, but that\'s not an item you can return.\n')
 
