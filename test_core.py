@@ -209,3 +209,59 @@ def test_dictionary_to_file():
 bike,Bike,25,150,10
 skateboard,Skateboard,10,80,6
 scooter,Scooter,15,65,8'''
+
+
+def test_return_item():
+    assert core.return_item({
+        'bike': {
+            'name': 'Bike',
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 10
+        },
+        'skateboard': {
+            'name': 'Skateboard',
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'name': 'Scooter',
+            'rent price': 15,
+            'replacement price': 65,
+            'amount': 8
+        }
+    }, 'bike') == {
+        'bike': {
+            'name': 'Bike',
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 11
+        },
+        'skateboard': {
+            'name': 'Skateboard',
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'name': 'Scooter',
+            'rent price': 15,
+            'replacement price': 65,
+            'amount': 8
+        }
+    }
+
+
+@fake_file({
+    'file.txt':
+    'Money,Product,Type\n6.5,scooter,rent,\n9.55,scooter,return,\n2.7,skateboard,return,\n15.0,bike,rent,'
+})
+def test_create_history():
+    assert core.create_history('') == 'None'
+
+    assert core.create_history(disk.read_file('file.txt')) == [[[
+        '6.5', 'scooter', 'rent', '\n'
+    ], ['9.55', 'scooter', 'return',
+        '\n'], ['2.7', 'skateboard', 'return',
+                '\n'], ['15.0', 'bike', 'rent', '']]]

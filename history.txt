@@ -1,9 +1,5 @@
 Money,Product,Type
-15.0,bike,rent,
-15.0,bike,rent,
-15.0,bike,rent,
-15.0,bike,rent,
-15.0,bike,rent,
-15.0,bike,rent,
 6.5,scooter,rent,
 9.55,scooter,return,
+2.7,skateboard,return,
+15.0,bike,rent,
