@@ -25,6 +25,7 @@ def customer_choices(inventory, history):
         if choice == '2':
             returning(inventory, history)
         if choice == '3':
+            print('\nGoodbye')
             exit()
 
 
@@ -40,6 +41,7 @@ def employee_choices(inventory, history):
         elif choice == '3':
             total_revenue(history)
         elif choice == '4':
+            print('\nGoodbye')
             exit()
         else:
             print('Invalid Response. Please enter a valid number.')
@@ -93,6 +95,7 @@ def renting(inventory, history):
                     core.dictionary_to_file(inventory), 'inventory.txt')
             return inventory
         if choice == 'exit':
+            print('\nGoodbye')
             exit()
         elif choice not in inventory:
             print('\nPlease choose a valid option.\n')
@@ -116,9 +119,12 @@ def returning(inventory, history):
                 'history.txt')
             disk.write_file(
                 core.dictionary_to_file(inventory), 'inventory.txt')
-        return inventory,
+            return inventory,
         if choice not in inventory:
             print('\nSorry, but that\'s not an item you can return.\n')
+        if choice == 'exit':
+            print('\nGoodbye')
+            exit()
 
 
 def main():
@@ -133,6 +139,7 @@ def main():
         elif user == '2':
             employee_choices(inventory, history)
         elif user == '3':
+            print('\nGoodbye')
             exit()
 
 
