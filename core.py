@@ -71,9 +71,8 @@ def find_total(history):
 
 
 def dictionary_to_file(dictionary):
-    return '''type,name,rent price,replacement price,amount
-bike,Bike,25,150,{}
-skateboard,Skateboard,10,80,{}
-scooter,Scooter,15,65,{}'''.format(dictionary['bike']['amount'],
-                                   dictionary['skateboard']['amount'],
-                                   dictionary['scooter']['amount'])
+    return f'''type,name,rent price,replacement price,amount
+{dictionary['bike']['name'].lower()},{dictionary['bike']['name']},{dictionary['bike']['rent price']},{dictionary['bike']['replacement price']},{dictionary['bike']['amount']},
+{dictionary['skateboard']['name'].lower()},{dictionary['skateboard']['name']},{dictionary['skateboard']['rent price']},{dictionary['skateboard']['replacement price']},{dictionary['skateboard']['amount']},
+{dictionary['scooter']['name'].lower()},{dictionary['scooter']['name']},{dictionary['scooter']['rent price']},{dictionary['scooter']['replacement price']},{dictionary['scooter']['amount']},
+'''
