@@ -210,6 +210,7 @@ bike,Bike,25,150,10,
 skateboard,Skateboard,10,80,6,
 scooter,Scooter,15,65,8,'''
 
+
 def test_return_item():
     assert core.return_item({
         'bike': {
@@ -308,3 +309,12 @@ def test_price_by_days():
             'amount': 8
         }
     }, 'scooter', 7.2) == 70
+
+
+#@fake_file({
+#    'employee.txt', 'employee names\nJoe Smith\nBob Smith\nRick Roll\nCharles Sheen\n'
+#})
+#def test_make_employee_list():
+#    assert core.make_employee_list(disk.read_file('employee.txt')) == [
+#        'joesmith', 'bobsmith', 'rickroll', 'charlessheen'
+#    ]

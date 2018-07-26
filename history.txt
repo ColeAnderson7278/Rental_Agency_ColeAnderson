@@ -49,3 +49,8 @@ Money,Product,Type
 3434.3,sumn,rent,
 8000,truck,return,
 1530,sumn,return,
+15.0,bike,rent,
+60,bike,return,
+80,bike,return,
+None,bike,return,
+None,bike,return,

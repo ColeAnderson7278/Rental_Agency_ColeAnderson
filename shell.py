@@ -15,9 +15,9 @@ def customer_choices(inventory, history):
             '\n1) Rent\n2) Return\n3) Exit\nWhat can I help you with: ')
         if choice == '1':
             renting(inventory, history)
-        if choice == '2':
+        elif choice == '2':
             returning(inventory, history)
-        if choice == '3':
+        elif choice == '3':
             print('\nGoodbye')
             exit()
 
@@ -82,7 +82,7 @@ def renting(inventory, history):
                             inventory[choice]['replacement price'])))
                 inventory = core.rent_item(inventory, choice)
             return write_in_rent(inventory, choice, None)
-        if choice == 'exit':
+        elif choice == 'exit':
             print('\nGoodbye')
             exit()
         elif choice not in inventory:
@@ -95,9 +95,9 @@ def returning(inventory, history):
         choice = input('\nWhat item are you returning: ')
         if choice in inventory:
             return return_item_type(inventory, history, choice)
-        if choice not in inventory:
+        elif choice not in inventory:
             print('\nSorry, but that\'s not an item you can return.\n')
-        if choice == 'exit':
+        elif choice == 'exit':
             print('\nGoodbye')
             exit()
 
@@ -105,8 +105,8 @@ def returning(inventory, history):
 def return_item_type(inventory, history, choice):
     while True:
         return_type = input(
-            '\n1) Return Item\n2) Replace Item\n3) Exit\nPlease choose what you would like to do: '
-        )
+            '\n1) Return Item\n2) Replace Item\n3) Exit\nPlease choose whether you would like to return or replace the {}: '.
+            format(inventory[choice]['name']))
         if return_type == '1':
             price = return_days(inventory, choice)
             inventory = core.return_item(inventory, choice)
@@ -153,7 +153,7 @@ def return_days(inventory, choice):
         days = str(days.strip())
         if days.isdigit() == True:
             return core.price_by_days(inventory, choice, float(days))
-        if days.isdigit() == False:
+        elif days.isdigit() == False:
             print('\nPlease enter a valid number of days.')
 
 
@@ -171,6 +171,8 @@ def main():
         elif user == '3':
             print('\nGoodbye')
             exit()
+        else:
+            print('\nPlease enter a valid choice.')
 
 
 if __name__ == '__main__':

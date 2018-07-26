@@ -26,13 +26,11 @@ def return_item(inventory, item_type):
 
 
 def sales_tax(number):
-    number = round(number + (number * .07), 2)
-    return number
+    return round(number + (number * .07), 2)
 
 
 def replacement_tax(number):
-    number = round((number * .1), 2)
-    return number
+    return round((number * .1), 2)
 
 
 def add_to_history(inventory, type_, choice, price):
@@ -78,3 +76,10 @@ def dictionary_to_file(dictionary):
 def price_by_days(inventory, choice, days):
     price = inventory[choice]['rent price'] * (round(days))
     return price
+
+
+#def make_employee_list(file_info):
+#    employees = []
+#    for lines in file_info:
+#        employees.append(lines.lower())
+#    return employees
