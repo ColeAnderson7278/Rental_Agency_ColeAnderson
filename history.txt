@@ -36,3 +36,5 @@ Money,Product,Type
 150,bike,return,
 80,skateboard,return,
 120,scooter,return,
+150,bike,return,
+80,skateboard,return,

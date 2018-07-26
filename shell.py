@@ -128,7 +128,9 @@ def return_item_type(inventory, history, choice):
             inventory = core.return_item(inventory, choice)
             print('\nYou\'ve replaced 1 {}. The total price while be ${}.'.
                   format(inventory[choice]['name'],
-                         inventory[choice]['replacement price']))
+                         (inventory[choice]['replacement price'] -
+                          core.replacement_tax(
+                              inventory[choice]['replacement price']))))
             return write_in_return(inventory, choice,
                                    inventory[choice]['replacement price'])
         elif return_type == '3':
