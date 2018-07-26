@@ -106,6 +106,20 @@ def returning(inventory, history):
     while True:
         choice = input('What item are you returning: ')
         if choice in inventory:
+            return return_item_type(inventory, history, choice)
+        if choice not in inventory:
+            print('\nSorry, but that\'s not an item you can return.\n')
+        if choice == 'exit':
+            print('\nGoodbye')
+            exit()
+
+
+def return_item_type(inventory, history, choice):
+    while True:
+        return_type = input(
+            '\n1) Return Item\n2) Replace Item\n3) Exit\nPlease choose what you would like to do: '
+        )
+        if return_type == '1':
             inventory = core.return_item(inventory, choice)
             print(
                 '\nYou\'ve returned 1 {}. Here is your deposit of ${} and your total is ${}'.
@@ -119,12 +133,25 @@ def returning(inventory, history):
                 'history.txt')
             disk.write_file(
                 core.dictionary_to_file(inventory), 'inventory.txt')
+            return inventory
+        elif return_type == '2':
+            inventory = core.return_item(inventory, choice)
+            print('\nYou\'ve replaced 1 {}. The total price while be ${}.'.
+                  format(inventory[choice]['name'],
+                         (inventory[choice]['replacement price']) -
+                         core.replacement_tax(
+                             inventory[choice]['replacement price'])))
+            disk.append_file(
+                core.add_to_history(inventory, 'return', choice),
+                'history.txt')
+            disk.write_file(
+                core.dictionary_to_file(inventory), 'inventory.txt')
             return inventory,
-        if choice not in inventory:
-            print('\nSorry, but that\'s not an item you can return.\n')
-        if choice == 'exit':
+        elif return_type == '3':
             print('\nGoodbye')
             exit()
+        else:
+            print('\nPlease enter a correct response.')
 
 
 def main():
