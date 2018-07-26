@@ -178,9 +178,9 @@ def test_find_total():
                               '\n'], ['15.0', 'bike', 'rent', '\n'],
                              ['6.5', 'scooter', 'rent', '\n']]]) == 36.5
 
-    assert core.find_total([[['22.0', 'bike', 'rent',
+    assert core.find_total([[['22.777', 'bike', 'rent',
                               '\n'], ['15.0', 'bike', 'rent', '\n'],
-                             ['9.5', 'scooter', 'rent', '\n']]]) == 46.5
+                             ['9.0', 'scooter', 'rent', '\n']]]) == 46.78
 
     assert core.find_total([[]]) == 0.0
 

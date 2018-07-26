@@ -67,7 +67,7 @@ def find_total(history):
     total = 0
     for line in history[0][0:]:
         total += float(line[0])
-    return total
+    return round((total), 2)
 
 
 def dictionary_to_file(dictionary):
