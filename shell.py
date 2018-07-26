@@ -5,11 +5,11 @@ import core
 def print_inventory(inventory):
     print(f'''
 ---------------------------------------------------------------------------
-{inventory['bike']['name']} - Rent Price: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
+{inventory['bike']['name']} - Rent Price Per Day: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
 
-{inventory['skateboard']['name']} - Rent Price: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
+{inventory['skateboard']['name']} - Rent Price Per Day: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
 
-{inventory['scooter']['name']} - Rent Price: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
+{inventory['scooter']['name']} - Rent Price Per Day: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
 
 Please enter "exit" to leave the program.
 ---------------------------------------------------------------------------
@@ -88,7 +88,7 @@ def renting(inventory, history):
                         core.replacement_tax(
                             inventory[choice]['replacement price'])))
                 inventory = core.rent_item(inventory, choice)
-            return write_in_rent(inventory, choice)
+            return write_in_rent(inventory, choice, None)
         if choice == 'exit':
             print('\nGoodbye')
             exit()
@@ -123,15 +123,14 @@ def return_item_type(inventory, history, choice):
                     inventory[choice]['name'],
                     core.replacement_tax(
                         inventory[choice]['replacement price']), price))
-            return write_in_return(inventory, choice)
+            return write_in_return(inventory, choice, price)
         elif return_type == '2':
             inventory = core.return_item(inventory, choice)
             print('\nYou\'ve replaced 1 {}. The total price while be ${}.'.
                   format(inventory[choice]['name'],
-                         (inventory[choice]['replacement price']) -
-                         core.replacement_tax(
-                             inventory[choice]['replacement price'])))
-            return write_in_return(inventory, choice)
+                         inventory[choice]['replacement price']))
+            return write_in_return(inventory, choice,
+                                   inventory[choice]['replacement price'])
         elif return_type == '3':
             print('\nGoodbye')
             exit()
@@ -139,16 +138,16 @@ def return_item_type(inventory, history, choice):
             print('\nPlease enter a correct response.')
 
 
-def write_in_return(inventory, choice):
+def write_in_return(inventory, choice, price):
     disk.append_file(
-        core.add_to_history(inventory, 'return', choice), 'history.txt')
+        core.add_to_history(inventory, 'return', choice, price), 'history.txt')
     disk.write_file(core.dictionary_to_file(inventory), 'inventory.txt')
     return inventory
 
 
-def write_in_rent(inventory, choice):
+def write_in_rent(inventory, choice, price):
     disk.append_file(
-        core.add_to_history(inventory, 'rent', choice), 'history.txt')
+        core.add_to_history(inventory, 'rent', choice, price), 'history.txt')
     disk.write_file(core.dictionary_to_file(inventory), 'inventory.txt')
     return inventory
 

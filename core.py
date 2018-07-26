@@ -35,15 +35,12 @@ def replacement_tax(number):
     return number
 
 
-def add_to_history(inventory, type_, choice):
+def add_to_history(inventory, type_, choice, price):
     if type_ == 'rent':
         return f'''{replacement_tax(
                         inventory[choice]['replacement price'])},{choice},{type_},\n'''
     elif type_ == 'return':
-        payment = round(
-            sales_tax(inventory[choice]['rent price']) - replacement_tax(
-                inventory[choice]['replacement price']), 2)
-        return f'''{payment},{choice},{type_},\n'''
+        return f'''{price},{choice},{type_},\n'''
 
 
 def create_history(file_info):
