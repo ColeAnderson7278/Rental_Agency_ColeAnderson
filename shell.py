@@ -81,7 +81,7 @@ def renting(inventory, history):
                 print('\nSorry, that item is not avaliable.')
             else:
                 print(
-                    '\nThe cost for the {} will be ${} when you return it. As for now your deposit price is ${}'.
+                    '\nThe cost for the {} will be ${} when you return it . As for now your deposit price is ${}'.
                     format(
                         inventory[choice]['name'],
                         core.sales_tax(inventory[choice]['rent price']),
@@ -151,6 +151,15 @@ def write_in_rent(inventory, choice):
         core.add_to_history(inventory, 'rent', choice), 'history.txt')
     disk.write_file(core.dictionary_to_file(inventory), 'inventory.txt')
     return inventory
+
+
+def return_days(inventory, choice):
+    days = input('\nHow many days have you had this item: ')
+    days = float(days.strip())
+    if days.isdigit() == True:
+        return core.price_by_days(inventory, choice, days)
+    elif days.isdigit() == False:
+        print('\nPlease enter a valid number of days.')
 
 
 def main():

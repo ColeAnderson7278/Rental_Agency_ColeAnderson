@@ -266,3 +266,47 @@ def test_create_history():
     ], ['9.55', 'scooter', 'return',
         '\n'], ['2.7', 'skateboard', 'return',
                 '\n'], ['15.0', 'bike', 'rent', '']]]
+
+
+def test_price_by_days():
+    assert core.price_by_days({
+        'bike': {
+            'name': 'Bike',
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 10
+        },
+        'skateboard': {
+            'name': 'Skateboard',
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'name': 'Scooter',
+            'rent price': 15,
+            'replacement price': 65,
+            'amount': 8
+        }
+    }, 'bike', 2) == 50
+
+    assert core.price_by_days({
+        'bike': {
+            'name': 'Bike',
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 10
+        },
+        'skateboard': {
+            'name': 'Skateboard',
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'name': 'Scooter',
+            'rent price': 10,
+            'replacement price': 65,
+            'amount': 8
+        }
+    }, 'scooter', 7.2) == 70

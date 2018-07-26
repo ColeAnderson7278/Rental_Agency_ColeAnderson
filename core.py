@@ -76,3 +76,8 @@ def dictionary_to_file(dictionary):
 {dictionary['skateboard']['name'].lower()},{dictionary['skateboard']['name']},{dictionary['skateboard']['rent price']},{dictionary['skateboard']['replacement price']},{dictionary['skateboard']['amount']},
 {dictionary['scooter']['name'].lower()},{dictionary['scooter']['name']},{dictionary['scooter']['rent price']},{dictionary['scooter']['replacement price']},{dictionary['scooter']['amount']},
 '''
+
+
+def price_by_days(inventory, choice, days):
+    price = inventory[choice]['rent price'] * (round(days))
+    return price
