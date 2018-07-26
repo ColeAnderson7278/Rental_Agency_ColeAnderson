@@ -88,12 +88,7 @@ def renting(inventory, history):
                         core.replacement_tax(
                             inventory[choice]['replacement price'])))
                 inventory = core.rent_item(inventory, choice)
-                disk.append_file(
-                    core.add_to_history(inventory, 'rent', choice),
-                    'history.txt')
-                disk.write_file(
-                    core.dictionary_to_file(inventory), 'inventory.txt')
-            return inventory
+            return write_in_rent(inventory, choice)
         if choice == 'exit':
             print('\nGoodbye')
             exit()
@@ -128,12 +123,7 @@ def return_item_type(inventory, history, choice):
                     core.replacement_tax(
                         inventory[choice]['replacement price']),
                     core.sales_tax(inventory[choice]['rent price'])))
-            disk.append_file(
-                core.add_to_history(inventory, 'return', choice),
-                'history.txt')
-            disk.write_file(
-                core.dictionary_to_file(inventory), 'inventory.txt')
-            return inventory
+            return write_in_return(inventory, choice)
         elif return_type == '2':
             inventory = core.return_item(inventory, choice)
             print('\nYou\'ve replaced 1 {}. The total price while be ${}.'.
@@ -141,17 +131,26 @@ def return_item_type(inventory, history, choice):
                          (inventory[choice]['replacement price']) -
                          core.replacement_tax(
                              inventory[choice]['replacement price'])))
-            disk.append_file(
-                core.add_to_history(inventory, 'return', choice),
-                'history.txt')
-            disk.write_file(
-                core.dictionary_to_file(inventory), 'inventory.txt')
-            return inventory,
+            return write_in_return(inventory, choice)
         elif return_type == '3':
             print('\nGoodbye')
             exit()
         else:
             print('\nPlease enter a correct response.')
+
+
+def write_in_return(inventory, choice):
+    disk.append_file(
+        core.add_to_history(inventory, 'return', choice), 'history.txt')
+    disk.write_file(core.dictionary_to_file(inventory), 'inventory.txt')
+    return inventory
+
+
+def write_in_rent(inventory, choice):
+    disk.append_file(
+        core.add_to_history(inventory, 'rent', choice), 'history.txt')
+    disk.write_file(core.dictionary_to_file(inventory), 'inventory.txt')
+    return inventory
 
 
 def main():
