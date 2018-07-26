@@ -208,9 +208,7 @@ def test_dictionary_to_file():
     }) == '''type,name,rent price,replacement price,amount
 bike,Bike,25,150,10,
 skateboard,Skateboard,10,80,6,
-scooter,Scooter,15,65,8,
-'''
-
+scooter,Scooter,15,65,8,'''
 
 def test_return_item():
     assert core.return_item({

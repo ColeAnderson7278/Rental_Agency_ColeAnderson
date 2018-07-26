@@ -46,3 +46,6 @@ Money,Product,Type
 15.0,bike,rent,
 15.0,bike,rent,
 80,skateboard,return,
+3434.3,sumn,rent,
+8000,truck,return,
+1530,sumn,return,

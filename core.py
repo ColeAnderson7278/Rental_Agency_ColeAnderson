@@ -67,14 +67,6 @@ def find_total(history):
     return round((total), 2)
 
 
-#def dictionary_to_file(dictionary):
-#    return f'''type,name,rent price,replacement price,amount
-#{dictionary['bike']['name'].lower()},{dictionary['bike']['name']},{dictionary['bike']['rent price']},{dictionary['bike']['replacement price']},{dictionary['bike']['amount']},
-#{dictionary['skateboard']['name'].lower()},{dictionary['skateboard']['name']},{dictionary['skateboard']['rent price']},{dictionary['skateboard']['replacement price']},{dictionary['skateboard']['amount']},
-#{dictionary['scooter']['name'].lower()},{dictionary['scooter']['name']},{dictionary['scooter']['rent price']},{dictionary['scooter']['replacement price']},{dictionary['scooter']['amount']},
-#'''
-
-
 def dictionary_to_file(dictionary):
     string = 'type,name,rent price,replacement price,amount'
     for key in dictionary:
