@@ -38,3 +38,5 @@ Money,Product,Type
 120,scooter,return,
 150,bike,return,
 80,skateboard,return,
+15.0,bike,rent,
+45,scooter,return,

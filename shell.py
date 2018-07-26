@@ -3,17 +3,10 @@ import core
 
 
 def print_inventory(inventory):
-    print(f'''
----------------------------------------------------------------------------
-{inventory['bike']['name']} - Rent Price Per Day: ${inventory['bike']['rent price']} Replacement Price: ${inventory['bike']['replacement price']} In-Stock: {inventory['bike']['amount']}
-
-{inventory['skateboard']['name']} - Rent Price Per Day: ${inventory['skateboard']['rent price']} Replacement Price: ${inventory['skateboard']['replacement price']} In-Stock: {inventory['skateboard']['amount']}
-
-{inventory['scooter']['name']} - Rent Price Per Day: ${inventory['scooter']['rent price']} Replacement Price: ${inventory['scooter']['replacement price']} In-Stock: {inventory['scooter']['amount']}
-
-Please enter "exit" to leave the program.
----------------------------------------------------------------------------
-    ''')
+    for key in inventory:
+        print(
+            f"\n{inventory[key]['name']} - Rent Price Per Day: {inventory[key]['rent price']} Replacement Price: {inventory[key]['replacement price']} In-Stock: {inventory[key]['amount']}"
+        )
 
 
 def customer_choices(inventory, history):
@@ -74,7 +67,7 @@ def total_revenue(history):
 def renting(inventory, history):
     print_inventory(inventory)
     while True:
-        choice = input('What would you like to rent: ')
+        choice = input('\nWhat would you like to rent: ')
         choice = choice.lower().strip()
         if choice in inventory:
             if inventory[choice]['amount'] <= 0:
@@ -99,7 +92,7 @@ def renting(inventory, history):
 def returning(inventory, history):
     print_inventory(inventory)
     while True:
-        choice = input('What item are you returning: ')
+        choice = input('\nWhat item are you returning: ')
         if choice in inventory:
             return return_item_type(inventory, history, choice)
         if choice not in inventory:
