@@ -149,7 +149,7 @@ def test_add_to_history():
             'replacement price': 65,
             'amount': 8
         }
-    }), 'rent', 'bike') == '''15.0,bike,rent,\n'''
+    }), 'rent', 'bike', 15) == '''15.0,bike,rent,\n'''
 
     assert core.add_to_history(({
         'bike': {
@@ -170,7 +170,7 @@ def test_add_to_history():
             'replacement price': 65,
             'amount': 8
         }
-    }), 'return', 'scooter') == '''9.55,scooter,return,\n'''
+    }), 'return', 'scooter', 9.55) == '''9.55,scooter,return,\n'''
 
 
 def test_find_total():
