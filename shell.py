@@ -115,14 +115,14 @@ def return_item_type(inventory, history, choice):
             '\n1) Return Item\n2) Replace Item\n3) Exit\nPlease choose what you would like to do: '
         )
         if return_type == '1':
+            price = return_days(inventory, choice)
             inventory = core.return_item(inventory, choice)
             print(
                 '\nYou\'ve returned 1 {}. Here is your deposit of ${} and your total is ${}'.
                 format(
                     inventory[choice]['name'],
                     core.replacement_tax(
-                        inventory[choice]['replacement price']),
-                    core.sales_tax(inventory[choice]['rent price'])))
+                        inventory[choice]['replacement price']), price))
             return write_in_return(inventory, choice)
         elif return_type == '2':
             inventory = core.return_item(inventory, choice)
@@ -154,12 +154,13 @@ def write_in_rent(inventory, choice):
 
 
 def return_days(inventory, choice):
-    days = input('\nHow many days have you had this item: ')
-    days = float(days.strip())
-    if days.isdigit() == True:
-        return core.price_by_days(inventory, choice, days)
-    elif days.isdigit() == False:
-        print('\nPlease enter a valid number of days.')
+    while True:
+        days = input('\nHow many days have you had this item: ')
+        days = str(days.strip())
+        if days.isdigit() == True:
+            return core.price_by_days(inventory, choice, float(days))
+        if days.isdigit() == False:
+            print('\nPlease enter a valid number of days.')
 
 
 def main():
