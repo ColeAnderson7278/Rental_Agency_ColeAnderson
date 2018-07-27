@@ -1,3 +1,4 @@
+from unittest import mock
 from bcca.test import fake_file
 import core
 import disk
@@ -349,3 +350,9 @@ def test_make_employee_list():
 def test_employee_check():
     assert core.employee_check(['joe smith', 'bob smith'], 'bob smith') == True
     assert core.employee_check(['joe smith', 'bob smith'], 'bob') == False
+
+
+@mock.patch('builtins.exit')
+def test_employee_check_exit(fake_exit):
+    core.employee_check(['joe smith', 'bob smith'], 'exit')
+    assert fake_exit.call_args_list == [[]]

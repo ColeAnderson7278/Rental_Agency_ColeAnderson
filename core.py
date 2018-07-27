@@ -88,5 +88,7 @@ def make_employee_list(file_info):
 def employee_check(employees, name):
     if name.lower() in employees:
         return True
+    if name.lower() == 'exit':
+        exit()
     else:
         return False
