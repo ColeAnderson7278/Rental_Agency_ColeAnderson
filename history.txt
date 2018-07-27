@@ -52,5 +52,6 @@ Money,Product,Type
 15.0,bike,rent,
 60,bike,return,
 80,bike,return,
-None,bike,return,
-None,bike,return,
+15.0,bike,rent,
+40,skateboard,return,
+150,bike,return,

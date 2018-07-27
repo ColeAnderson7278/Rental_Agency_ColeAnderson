@@ -1,4 +1,4 @@
 type,name,rent price,replacement price,amount
 bike,Bike,20,150,9,
-skateboard,Skateboard,10,80,13,
+skateboard,Skateboard,10,80,14,
 scooter,Scooter,15,65,10,
