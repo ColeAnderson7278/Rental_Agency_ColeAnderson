@@ -68,7 +68,7 @@ def find_total(history):
 def dictionary_to_file(dictionary):
     string = 'type,name,rent price,replacement price,amount'
     for key in dictionary:
-        string += f"\n{dictionary[key]['name'].lower()},{dictionary[key]['name']},{dictionary[key]['rent price']},{dictionary[key]['replacement price']},{dictionary[key]['amount']},"
+        string += f"\n{key},{dictionary[key]['name']},{dictionary[key]['rent price']},{dictionary[key]['replacement price']},{dictionary[key]['amount']},"
 
     return string
 

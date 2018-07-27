@@ -5,7 +5,7 @@ import core
 def print_inventory(inventory):
     for key in inventory:
         print(
-            f"\n{inventory[key]['name']} - Rent Price Per Day: {inventory[key]['rent price']} Replacement Price: {inventory[key]['replacement price']} In-Stock: {inventory[key]['amount']}"
+            f"\n{key}) Name: {inventory[key]['name']} Rent Price Per Day: {inventory[key]['rent price']} Replacement Price: {inventory[key]['replacement price']} In-Stock: {inventory[key]['amount']}"
         )
 
 
