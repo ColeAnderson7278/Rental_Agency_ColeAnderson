@@ -310,11 +310,42 @@ def test_price_by_days():
         }
     }, 'scooter', 7.2) == 70
 
+    assert core.price_by_days({
+        'bike': {
+            'name': 'Bike',
+            'rent price': 25,
+            'replacement price': 150,
+            'amount': 10
+        },
+        'skateboard': {
+            'name': 'Skateboard',
+            'rent price': 10,
+            'replacement price': 80,
+            'amount': 6
+        },
+        'scooter': {
+            'name': 'Scooter',
+            'rent price': 10,
+            'replacement price': 65,
+            'amount': 8
+        }
+    }, 'skateboard', 3) == 30
 
-#@fake_file({
-#    'employee.txt', 'employee names\nJoe Smith\nBob Smith\nRick Roll\nCharles Sheen\n'
-#})
-#def test_make_employee_list():
-#    assert core.make_employee_list(disk.read_file('employee.txt')) == [
-#        'joesmith', 'bobsmith', 'rickroll', 'charlessheen'
-#    ]
+
+@fake_file({
+    'employee.txt':
+    'employee names\nJoeSmith\nBobSmith\nRickRoll\nCharlesSheen\n'
+})
+def test_make_employee_list():
+    assert core.make_employee_list(disk.read_file('employee.txt')) == [
+        'joesmith', 'bobsmith', 'rickroll', 'charlessheen'
+    ]
+
+
+@fake_file({
+    'employee_list.txt':
+    'employee names\nJoe Smith\nBob Smith\nRick Roll\nCharles Sheen\n'
+})
+def test_employee_check():
+    assert core.employee_check(['joe smith', 'bob smith'], 'bob smith') == True
+    assert core.employee_check(['joe smith', 'bob smith'], 'bob') == False

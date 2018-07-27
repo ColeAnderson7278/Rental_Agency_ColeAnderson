@@ -78,8 +78,15 @@ def price_by_days(inventory, choice, days):
     return price
 
 
-#def make_employee_list(file_info):
-#    employees = []
-#    for lines in file_info:
-#        employees.append(lines.lower())
-#    return employees
+def make_employee_list(file_info):
+    employees = []
+    for lines in file_info:
+        employees.append(lines.lower().replace('\n', ''))
+    return employees
+
+
+def employee_check(employees, name):
+    if name.lower() in employees:
+        return True
+    else:
+        return False

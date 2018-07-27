@@ -22,22 +22,26 @@ def customer_choices(inventory, history):
             exit()
 
 
-def employee_choices(inventory, history):
-    while True:
-        choice = input(
-            '\n1) Check Stock\n2) Transactions\n3) Revenue\n4) Exit\nWhat can I help you with: '
-        )
-        if choice == '1':
-            check_stock(inventory)
-        elif choice == '2':
-            transaction_history()
-        elif choice == '3':
-            total_revenue(history)
-        elif choice == '4':
-            print('\nGoodbye')
-            exit()
-        else:
-            print('Invalid Response. Please enter a valid number.')
+def employee_choices(inventory, history, employees):
+    if core.employee_check(employees) == True:
+        while True:
+            choice = input(
+                '\n1) Check Stock\n2) Transactions\n3) Revenue\n4) Exit\nWhat can I help you with: '
+            )
+            if choice == '1':
+                check_stock(inventory)
+            elif choice == '2':
+                transaction_history()
+            elif choice == '3':
+                total_revenue(history)
+            elif choice == '4':
+                print('\nGoodbye')
+                exit()
+            else:
+                print('Invalid Response. Please enter a valid number.')
+
+    elif core.employee_check(employees) == False:
+        print('Sorry, that is not a name of a valid employee.')
 
 
 def check_stock(inventory):
@@ -160,6 +164,7 @@ def return_days(inventory, choice):
 def main():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
     history = core.create_history(disk.read_file('history.txt'))
+    employeees = core.make_employee_list(disk.read_file('employee.txt'))
     while True:
         user = input(
             'Welcome to the Rental Store\n\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
