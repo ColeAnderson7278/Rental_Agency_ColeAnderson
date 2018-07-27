@@ -52,16 +52,10 @@ def is_employee(employees):
 
 
 def check_stock(inventory):
-    print(f'''
----------------------------------------------------------------------------
-{inventory['bike']['name']} -In-Stock: {inventory['bike']['amount']}
-
-{inventory['skateboard']['name']} -In-Stock: {inventory['skateboard']['amount']}
-
-{inventory['scooter']['name']} -In-Stock: {inventory['scooter']['amount']}
-
----------------------------------------------------------------------------
-    ''')
+    for key in inventory:
+        print(
+            f"\nName: {inventory[key]['name']} In-Stock: {inventory[key]['amount']}"
+        )
 
 
 def transaction_history():
