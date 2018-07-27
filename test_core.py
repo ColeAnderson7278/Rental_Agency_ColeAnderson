@@ -206,7 +206,7 @@ def test_dictionary_to_file():
             'replacement price': 65,
             'amount': 8
         }
-    }) == '''type,name,rent price,replacement price,amount
+    }) == '''item number,name,rent price,replacement price,amount
 bike,Bike,25,150,10,
 skateboard,Skateboard,10,80,6,
 scooter,Scooter,15,65,8,'''

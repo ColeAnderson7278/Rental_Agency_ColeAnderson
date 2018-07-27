@@ -36,9 +36,9 @@ def replacement_tax(number):
 def add_to_history(inventory, type_, choice, price):
     if type_ == 'rent':
         return f'''{replacement_tax(
-                        inventory[choice]['replacement price'])},{choice},{type_},\n'''
+                        inventory[choice]['replacement price'])},{inventory[choice]['name']},{type_},\n'''
     elif type_ == 'return':
-        return f'''{price},{choice},{type_},\n'''
+        return f'''{price},{inventory[choice]['name']},{type_},\n'''
 
 
 def create_history(file_info):
@@ -66,7 +66,7 @@ def find_total(history):
 
 
 def dictionary_to_file(dictionary):
-    string = 'type,name,rent price,replacement price,amount'
+    string = 'item number,name,rent price,replacement price,amount'
     for key in dictionary:
         string += f"\n{key},{dictionary[key]['name']},{dictionary[key]['rent price']},{dictionary[key]['replacement price']},{dictionary[key]['amount']},"
 

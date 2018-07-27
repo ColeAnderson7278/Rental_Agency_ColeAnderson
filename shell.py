@@ -97,7 +97,7 @@ def renting(inventory, history):
             print('\nGoodbye')
             exit()
         elif choice not in inventory:
-            print('\nPlease choose a valid option.\n')
+            print('\nPlease choose a valid option.')
 
 
 def returning(inventory, history):
