@@ -74,8 +74,7 @@ def dictionary_to_file(dictionary):
 
 
 def price_by_days(inventory, choice, days):
-    price = inventory[choice]['rent price'] * (round(days))
-    return price
+    return inventory[choice]['rent price'] * (round(days))
 
 
 def make_employee_list(file_info):
