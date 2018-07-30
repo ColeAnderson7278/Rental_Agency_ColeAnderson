@@ -1,4 +1,4 @@
 item number,name,rent price,replacement price,amount
-1,Bike,20,150,5,
-2,Skateboard,10,80,14,
-3,Scooter,15,65,10,
+1,Bike,20,150,7,
+2,Skateboard,10,80,15,
+3,Scooter,15,65,9,

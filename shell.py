@@ -39,9 +39,8 @@ def employee_choices(inventory, history, employees):
                     print('\nGoodbye')
                     exit()
                 else:
-                    print('Invalid Response. Please enter a valid number.')
-        else:
-            print('\nSorry, that is not a name of a valid employee.')
+                    print('\nInvalid Response. Please enter a valid number.')
+        print('\nSorry, that is not a name of a valid employee.')
 
 
 def is_employee(employees):
@@ -162,10 +161,14 @@ def return_days(inventory, choice):
             print('\nPlease enter a valid number of days.')
 
 
-def main():
+def load_text_files():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
     history = core.create_history(disk.read_file('history.txt'))
     employees = core.make_employee_list(disk.read_file('employee.txt'))
+    return inventory, history, employees
+
+
+def intro(inventory, history, employees):
     while True:
         user = input(
             'Welcome to the Rental Store\n\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
@@ -179,6 +182,11 @@ def main():
             exit()
         else:
             print('\nPlease enter a valid choice.')
+
+
+def main():
+    inventory, history, employees = load_text_files()
+    intro(inventory, history, employees)
 
 
 if __name__ == '__main__':
