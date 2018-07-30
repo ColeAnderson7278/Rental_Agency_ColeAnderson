@@ -333,20 +333,12 @@ def test_price_by_days():
     }, 'skateboard', 3) == 30
 
 
-@fake_file({
-    'employee.txt':
-    'employee names\nJoeSmith\nBobSmith\nRickRoll\nCharlesSheen\n'
-})
+@fake_file({'employee.txt': 'employee names\nJoeSmith\nBobSmith\n'})
 def test_make_employee_list():
-    assert core.make_employee_list(disk.read_file('employee.txt')) == [
-        'joesmith', 'bobsmith', 'rickroll', 'charlessheen'
-    ]
+    assert core.make_employee_list(
+        disk.read_file('employee.txt')) == ['joesmith', 'bobsmith']
 
 
-@fake_file({
-    'employee_list.txt':
-    'employee names\nJoe Smith\nBob Smith\nRick Roll\nCharles Sheen\n'
-})
 def test_employee_check():
     assert core.employee_check(['joe smith', 'bob smith'], 'bob smith') == True
     assert core.employee_check(['joe smith', 'bob smith'], 'bob') == False

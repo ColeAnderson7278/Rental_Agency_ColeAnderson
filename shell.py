@@ -3,10 +3,16 @@ import core
 
 
 def print_inventory(inventory):
+    print(
+        '---------------------------------------------------------------------------'
+    )
     for key in inventory:
         print(
             f"\n{key}) Name: {inventory[key]['name']} Rent Price Per Day: {inventory[key]['rent price']} Replacement Price: {inventory[key]['replacement price']} In-Stock: {inventory[key]['amount']}"
         )
+    print(
+        '\n---------------------------------------------------------------------------'
+    )
 
 
 def customer_choices(inventory, history):
@@ -24,7 +30,7 @@ def customer_choices(inventory, history):
 
 def employee_choices(inventory, history, employees):
     while True:
-        if is_employee(employees) == True:
+        if is_employee(employees):
             while True:
                 choice = input(
                     '\n1) Check Stock\n2) Transactions\n3) Revenue\n4) Exit\nWhat can I help you with: '
@@ -71,7 +77,9 @@ def total_revenue(history):
 def renting(inventory, history):
     print_inventory(inventory)
     while True:
-        choice = input('\nWhat would you like to rent: ')
+        choice = input(
+            '\nPlease input which item you would like to rent or exit to leave: '
+        )
         choice = choice.lower().strip()
         if choice in inventory:
             if inventory[choice]['amount'] <= 0:
@@ -96,14 +104,17 @@ def renting(inventory, history):
 def returning(inventory, history):
     print_inventory(inventory)
     while True:
-        choice = input('\nWhat item are you returning: ')
+        choice = input(
+            '\nPlease input which item you\'re returning or enter exit to leave: '
+        )
+        choice = choice.lower()
         if choice in inventory:
             return return_item_type(inventory, history, choice)
-        elif choice not in inventory:
-            print('\nSorry, but that\'s not an item you can return.\n')
         elif choice == 'exit':
             print('\nGoodbye')
             exit()
+        else:
+            print('\nSorry, but that\'s not an item you can return.')
 
 
 def return_item_type(inventory, history, choice):
