@@ -331,20 +331,3 @@ def test_price_by_days():
             'amount': 8
         }
     }, 'skateboard', 3) == 30
-
-
-@fake_file({'employee.txt': 'employee names\nJoeSmith\nBobSmith\n'})
-def test_make_employee_list():
-    assert core.make_employee_list(
-        disk.read_file('employee.txt')) == ['joesmith', 'bobsmith']
-
-
-def test_employee_check():
-    assert core.employee_check(['joe smith', 'bob smith'], 'bob smith') == True
-    assert core.employee_check(['joe smith', 'bob smith'], 'bob') == False
-
-
-@mock.patch('builtins.exit')
-def test_employee_check_exit(fake_exit):
-    core.employee_check(['joe smith', 'bob smith'], 'exit')
-    assert fake_exit.call_args_list == [[]]

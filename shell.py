@@ -15,6 +15,22 @@ def print_inventory(inventory):
     )
 
 
+def intro(inventory, history):
+    while True:
+        user = input(
+            'Welcome to the Rental Store\n\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
+        )
+        if user == '1':
+            customer_choices(inventory, history)
+        elif user == '2':
+            employee_choices(inventory, history)
+        elif user == '3':
+            print('\nGoodbye')
+            exit()
+        else:
+            print('\nPlease enter a valid choice.')
+
+
 def customer_choices(inventory, history):
     while True:
         choice = input(
@@ -28,32 +44,22 @@ def customer_choices(inventory, history):
             exit()
 
 
-def employee_choices(inventory, history, employees):
+def employee_choices(inventory, history):
     while True:
-        if is_employee(employees):
-            while True:
-                choice = input(
-                    '\n1) Check Stock\n2) Transactions\n3) Revenue\n4) Exit\nWhat can I help you with: '
-                )
-                if choice == '1':
-                    check_stock(inventory)
-                elif choice == '2':
-                    transaction_history()
-                elif choice == '3':
-                    total_revenue(history)
-                elif choice == '4':
-                    print('\nGoodbye')
-                    exit()
-                else:
-                    print('\nInvalid Response. Please enter a valid number.')
-        print('\nSorry, that is not a name of a valid employee.')
-
-
-def is_employee(employees):
-    name = input(
-        '\nPlease enter your full name to be verified or exit to stop program: '
-    )
-    return core.employee_check(employees, name.lower())
+        choice = input(
+            '\n1) Check Stock\n2) Transactions\n3) Revenue\n4) Exit\nWhat can I help you with: '
+        )
+        if choice == '1':
+            check_stock(inventory)
+        elif choice == '2':
+            transaction_history()
+        elif choice == '3':
+            total_revenue(history)
+        elif choice == '4':
+            print('\nGoodbye')
+            exit()
+        else:
+            print('\nInvalid Response. Please enter a valid number.')
 
 
 def check_stock(inventory):
@@ -175,29 +181,12 @@ def return_days(inventory, choice):
 def load_text_files():
     inventory = core.create_inventory(disk.read_file('inventory.txt'))
     history = core.create_history(disk.read_file('history.txt'))
-    employees = core.make_employee_list(disk.read_file('employee.txt'))
-    return inventory, history, employees
-
-
-def intro(inventory, history, employees):
-    while True:
-        user = input(
-            'Welcome to the Rental Store\n\n1) Customer\n2) Employee\n3) Exit\nWho may I help today: '
-        )
-        if user == '1':
-            customer_choices(inventory, history)
-        elif user == '2':
-            employee_choices(inventory, history, employees)
-        elif user == '3':
-            print('\nGoodbye')
-            exit()
-        else:
-            print('\nPlease enter a valid choice.')
+    return inventory, history
 
 
 def main():
-    inventory, history, employees = load_text_files()
-    intro(inventory, history, employees)
+    inventory, history = load_text_files()
+    intro(inventory, history)
 
 
 if __name__ == '__main__':

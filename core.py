@@ -75,19 +75,3 @@ def dictionary_to_file(dictionary):
 
 def price_by_days(inventory, choice, days):
     return inventory[choice]['rent price'] * (round(days))
-
-
-def make_employee_list(file_info):
-    employees = []
-    for lines in file_info:
-        employees.append(lines.lower().replace('\n', ''))
-    return employees
-
-
-def employee_check(employees, name):
-    if name.lower() in employees:
-        return True
-    if name.lower() == 'exit':
-        exit()
-    else:
-        return False
